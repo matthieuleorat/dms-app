@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import {DocumentsComponent} from "./documents/documents.component";
 
-//This is my case
 const routes: Routes = [
     {
         path: '',
-        component: DashboardComponent
+        component: DashboardComponent,
+        pathMatch: 'full',
     },
+    {
+        path: 'documents',
+        component: DocumentsComponent,
+    }
 ];
 
 @NgModule({
