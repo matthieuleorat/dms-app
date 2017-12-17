@@ -21,6 +21,7 @@ export class DocumentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.documents$ = this.documentService.getAllDocuments();
+    console.log(this.documents$);
   }
 
 }
