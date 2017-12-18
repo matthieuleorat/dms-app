@@ -6,7 +6,7 @@ import {DocumentService} from "../Service/document.service";
 
 @Component({
   selector: 'dms-documents',
-  template: `<dms-documents-list [documents]="documents$|async" (onDownload)="download($event)" )></dms-documents-list>`,
+  template: `<dms-documents-list [documents]="documents$|async" (onDownload)="download($event)"></dms-documents-list>`,
 })
 
 export class DocumentsComponent implements OnInit {
