@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Document } from "../Interface/document";
 
 @Component({
@@ -9,10 +9,16 @@ import { Document } from "../Interface/document";
 export class DocumentsListComponent implements OnInit {
 
   @Input() documents: Array<Document>;
+  @Output() onDownload = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  download(document: Document) {
+      this.onDownload.emit(document);
   }
 
 }

@@ -3,7 +3,7 @@
         <td><img [src]='document.fullThumbnailPath' ></td>
         <td>{{ document.name }}</td>
         <td>
-            <a class="button is-primary">Download</a>
+            <a class="button is-primary" (click)="download(document)">Download</a>
             <a class="button is-info">Edit</a>
             <a class="button is-danger">Delete</a>
         </td>
