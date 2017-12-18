@@ -1,5 +1,11 @@
-<table class="table is-full-width is-bordered">
+<table class="table is-fullwidth is-bordered is-hoverable">
     <tr *ngFor="let document of documents">
+        <td><img [src]='document.fullThumbnailPath' ></td>
         <td>{{ document.name }}</td>
+        <td>
+            <a class="button is-primary">Download</a>
+            <a class="button is-info">Edit</a>
+            <a class="button is-danger">Delete</a>
+        </td>
     </tr>
 </table>
