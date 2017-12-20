@@ -24,7 +24,7 @@ import { DocumentsComponent } from './documents/documents.component';
     AppRoutingModule,
   ],
   providers: [
-      DocumentService
+      DocumentService,
   ],
   bootstrap: [AppComponent]
 })

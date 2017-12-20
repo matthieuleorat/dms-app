@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { Document } from "../Interface/document";
 import { Router } from "@angular/router";
-import {DocumentService} from "../Service/document.service";
+import { DocumentService } from "../Service/document.service";
 
 @Component({
   selector: 'dms-documents',
@@ -12,7 +12,6 @@ import {DocumentService} from "../Service/document.service";
 export class DocumentsComponent implements OnInit {
 
   documents$: Observable<Document[]>;
-  document$: Observable<Document>;
 
   constructor(
       private documentService: DocumentService,
@@ -21,11 +20,9 @@ export class DocumentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.documents$ = this.documentService.getAllDocuments();
-    console.log(this.documents$);
   }
 
   download(document: Document) {
-    this.document$ = this.documentService.downloadDocument(document);
+    this.documentService.downloadFile(document);
   }
-
 }

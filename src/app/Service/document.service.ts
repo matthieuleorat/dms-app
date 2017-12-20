@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { Document } from "../Interface/document";
+import { saveAs } from 'file-saver';
 
 const API_URL = 'http://localhost/api/documents';
 
@@ -20,12 +21,17 @@ export class DocumentService {
         );
     }
 
-    downloadDocument (document: Document): Observable<Document> {
-        const headers = new HttpHeaders({'accept':'application/json'});
+    downloadFile(document: Document) {
+        let url = `${API_URL}/download/${document.id}`;
 
-        return this.http.get<Document>(
-            API_URL+'/download/'+document.id,
-            { headers }
+        const headers = new HttpHeaders({});
+        const params = {};
+        const options = {headers, params, responseType: 'blob'};
+
+        this.http.get(url, options).subscribe(
+            (response) => {
+                saveAs(new Blob([response], { type: "pdf" }), `${document.name}.pdf`);
+            }
         );
     }
 }
