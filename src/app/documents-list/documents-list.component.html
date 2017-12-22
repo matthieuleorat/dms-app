@@ -1,7 +1,8 @@
 <table class="table is-fullwidth is-bordered is-hoverable">
     <tr *ngFor="let document of documents">
-        <td><img [src]='document.fullThumbnailPath' ></td>
+        <td><img [src]='document.fullThumbnailPath'></td>
         <td>{{ document.name }}</td>
+        <td><dms-document-tags-list [tags]="document.tags"></dms-document-tags-list></td>
         <td>
             <a class="button is-primary" (click)="download(document)">Download</a>
             <a class="button is-info">Edit</a>
