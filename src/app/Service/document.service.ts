@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { Document } from "../Interface/document";
 import { saveAs } from 'file-saver';
@@ -24,11 +24,14 @@ export class DocumentService {
     downloadFile(document: Document) {
         let url = `${API_URL}/download/${document.id}`;
 
-        const headers = new HttpHeaders({});
-        const params = {};
-        const options = {headers, params, responseType: 'blob'};
+        let httpHeaders = new HttpHeaders({});
+        let httpParams = new HttpParams();
 
-        this.http.get(url, options).subscribe(
+        this.http.get(url, {
+            headers: httpHeaders,
+            params: httpParams,
+            responseType: 'blob'
+        }).subscribe(
             (response) => {
                 saveAs(new Blob([response], { type: "pdf" }), `${document.name}.pdf`);
             }
