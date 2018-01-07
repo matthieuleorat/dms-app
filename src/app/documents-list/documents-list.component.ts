@@ -4,7 +4,7 @@ import { Document } from "../Interface/document";
 @Component({
   selector: 'dms-documents-list',
   templateUrl: './documents-list.component.html',
-  styleUrls: ['./documents-list.component.css']
+  styleUrls: []
 })
 export class DocumentsListComponent implements OnInit {
 

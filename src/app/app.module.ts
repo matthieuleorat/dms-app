@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 // App
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { DocumentsListComponent } from './documents-list/documents-list.componen
 import { DocumentService} from "./Service/document.service";
 import { DocumentsComponent } from './documents/documents.component';
 import { DocumentTagsListComponent } from './tag/document-tags-list/document-tags-list.component';
+import { LoginComponent } from './security/login/login.component';
+import {SecurityService} from "./Service/security.service";
 
 @NgModule({
   declarations: [
@@ -23,14 +26,17 @@ import { DocumentTagsListComponent } from './tag/document-tags-list/document-tag
     DocumentsListComponent,
     DocumentsComponent,
     DocumentTagsListComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [
       DocumentService,
+      SecurityService,
   ],
   bootstrap: [AppComponent]
 })
