@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
         this.securityService.login(this.model.username, this.model.password)
             .subscribe(result => {
                 if (result.token) {
+                    localStorage.setItem('currentUser', JSON.stringify({ username: this.model.username, token: result.token}));
                     this.router.navigateByUrl('/');
                 } else {
                     console.log('error');

@@ -13,7 +13,7 @@ export class SecurityService {
     constructor(private http: HttpClient) {
     }
 
-    login(username: string, password: string):  Observable<boolean> {
+    login(username: string, password: string): Observable<object> {
         let url = `${API_URL}/login_check`;
 
         const httpHeaders = new HttpHeaders({
@@ -31,7 +31,6 @@ export class SecurityService {
             body,
             options
         );
-
         // .subscribe(
         //     (response) => {
         //         if (response && response.token) {
