@@ -36,4 +36,8 @@ export class SecurityService {
     static logout(): void {
         localStorage.removeItem('currentUser');
     }
+
+    static getUserToken(): string {
+        return JSON.parse(localStorage.getItem('currentUser')).token;
+    }
 }
