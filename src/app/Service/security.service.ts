@@ -13,7 +13,7 @@ export class SecurityService {
     constructor(private http: HttpClient) {
     }
 
-    login(username: string, password: string): Observable<object> {
+    login(username: string, password: string): Observable<any> {
         let url = `${API_URL}/login_check`;
 
         const httpHeaders = new HttpHeaders({
@@ -31,15 +31,9 @@ export class SecurityService {
             body,
             options
         );
-        // .subscribe(
-        //     (response) => {
-        //         if (response && response.token) {
-        //             localStorage.setItem('currentUser', JSON.stringify({ username: username, token: response.token}));
-        //             return true;
-        //         } else {
-        //             return false;
-        //         }
-        //     }
-        // );
+    }
+
+    static logout(): void {
+        localStorage.removeItem('currentUser');
     }
 }

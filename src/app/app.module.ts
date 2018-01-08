@@ -16,8 +16,12 @@ import { DocumentsListComponent } from './documents-list/documents-list.componen
 import { DocumentService} from "./Service/document.service";
 import { DocumentsComponent } from './documents/documents.component';
 import { DocumentTagsListComponent } from './tag/document-tags-list/document-tags-list.component';
+
+// Security
 import { LoginComponent } from './security/login/login.component';
 import {SecurityService} from "./Service/security.service";
+import { AuthGuard } from "./security/guards/index";
+import { LogoutComponent } from './security/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,7 @@ import {SecurityService} from "./Service/security.service";
     DocumentsComponent,
     DocumentTagsListComponent,
     LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,7 @@ import {SecurityService} from "./Service/security.service";
   providers: [
       DocumentService,
       SecurityService,
+      AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
