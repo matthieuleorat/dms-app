@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from "@angular/common/http";
-
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/map';
 
 const API_URL = 'http://localhost/api';
 
@@ -12,7 +13,7 @@ export class SecurityService {
     constructor(private http: HttpClient) {
     }
 
-    login(username: string, password: string) {
+    login(username: string, password: string):  Observable<boolean> {
         let url = `${API_URL}/login_check`;
 
         const httpHeaders = new HttpHeaders({
@@ -29,10 +30,17 @@ export class SecurityService {
             url,
             body,
             options
-        ).subscribe(
-            (response) => {
-                console.log(response);
-            }
         );
+
+        // .subscribe(
+        //     (response) => {
+        //         if (response && response.token) {
+        //             localStorage.setItem('currentUser', JSON.stringify({ username: username, token: response.token}));
+        //             return true;
+        //         } else {
+        //             return false;
+        //         }
+        //     }
+        // );
     }
 }

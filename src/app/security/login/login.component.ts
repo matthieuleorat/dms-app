@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {SecurityService} from "../../Service/security.service";
+import { SecurityService } from "../../Service/security.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'dms-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private securityService: SecurityService,
+        private router: Router,
     ) {
 
     }
@@ -24,8 +26,14 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.loading = true;
-        let token = this.securityService.login(this.model.username, this.model.password);
-        console.log(token);
+        this.securityService.login(this.model.username, this.model.password)
+            .subscribe(result => {
+                if (result.token) {
+                    this.router.navigateByUrl('/');
+                } else {
+                    console.log('error');
+                }
+            });
     }
 
 }
