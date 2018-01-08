@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from "@angular/common/http";
 
+
 const API_URL = 'http://localhost/api';
 
 @Injectable()
@@ -15,17 +16,23 @@ export class SecurityService {
         let url = `${API_URL}/login_check`;
 
         const httpHeaders = new HttpHeaders({
-            'content-type': 'multipart/form-data'
+            'Content-Type': 'application/x-www-form-urlencoded'
         });
+
+        let options = {
+             headers: httpHeaders
+        };
+
+         let body = `_username=${username}&_password=${password}`;
 
         return this.http.post(
             url,
-            { _username: "mleorat", _password: "P4Uva7D8" },
+            body,
+            options
         ).subscribe(
             (response) => {
                 console.log(response);
             }
         );
     }
-
 }
