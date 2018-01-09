@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
     model: any = {};
     loading = false;
+    error: string;
 
 
     constructor(
@@ -27,14 +28,18 @@ export class LoginComponent implements OnInit {
     login() {
         this.loading = true;
         this.securityService.login(this.model.username, this.model.password)
-            .subscribe(result => {
-                if (result.token) {
-                    localStorage.setItem('currentUser', JSON.stringify({ username: this.model.username, token: result.token}));
-                    this.router.navigateByUrl('/');
-                } else {
-                    console.log('error');
+            .subscribe(
+                result => {
+                    if (result.token) {
+                        localStorage.setItem('currentUser', JSON.stringify({ username: this.model.username, token: result.token}));
+                        this.router.navigateByUrl('/');
+                    }
+                },
+                err => {
+                    this.error = err.error.message;
+                    this.loading = false;
                 }
-            });
+            );
     }
 
 }

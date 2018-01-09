@@ -24,7 +24,7 @@ export class SecurityService {
              headers: httpHeaders
         };
 
-         let body = `_username=${username}&_password=${password}`;
+        let body = `_username=${username}&_password=${password}`;
 
         return this.http.post(
             url,
@@ -39,5 +39,10 @@ export class SecurityService {
 
     static getUserToken(): string {
         return JSON.parse(localStorage.getItem('currentUser')).token;
+    }
+
+    static isLoggedIn(): boolean {
+        let localuser = localStorage.getItem('currentUser');
+        return localuser && JSON.parse(localuser).token;
     }
 }
