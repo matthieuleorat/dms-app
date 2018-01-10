@@ -5,7 +5,7 @@
         <td><dms-document-tags-list [tags]="document.tags"></dms-document-tags-list></td>
         <td>
             <a class="button is-primary" (click)="download(document)">Download</a>
-            <a class="button is-info">Edit</a>
+            <a class="button is-info" routerLink="/documents/edit/{{ document.id }}">Edit</a>
             <a class="button is-danger">Delete</a>
         </td>
     </tr>

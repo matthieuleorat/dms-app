@@ -24,6 +24,7 @@ import { AuthGuard } from "./security/guards/index";
 import { LogoutComponent } from './security/logout/logout.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { DmsLayoutComponent } from './layouts/dms-layout/dms-layout.component';
+import { DocumentComponent } from './document/document.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DmsLayoutComponent } from './layouts/dms-layout/dms-layout.component';
     LogoutComponent,
     LoginLayoutComponent,
     DmsLayoutComponent,
+    DocumentComponent,
   ],
   imports: [
     BrowserModule,

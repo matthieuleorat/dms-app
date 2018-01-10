@@ -7,6 +7,7 @@ import { AuthGuard } from "./security/guards/index";
 import {LogoutComponent} from "./security/logout/logout.component";
 import {LoginLayoutComponent} from "./layouts/login-layout/login-layout.component";
 import {DmsLayoutComponent} from "./layouts/dms-layout/dms-layout.component";
+import {DocumentComponent} from "./document/document.component";
 
 const routes: Routes = [
         {
@@ -24,6 +25,10 @@ const routes: Routes = [
                 path: 'documents',
                 canActivate: [AuthGuard],
                 component: DocumentsComponent,
+            },
+            {
+                path: 'documents/edit/:id',
+                component: DocumentComponent,
             },
             {
                 path: 'logout',

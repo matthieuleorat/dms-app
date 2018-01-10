@@ -47,4 +47,20 @@ export class DocumentService {
             }
         );
     }
+
+    getDocument(id): Observable<Document> {
+        let token = SecurityService.getUserToken();
+
+        let url = `${API_URL}/${id}`;
+
+        const headers = new HttpHeaders({
+            'accept':'application/json',
+            'Authorization':'Bearer '+token,
+        });
+
+        return this.http.get<Document>(
+            url,
+            { headers }
+        );
+    }
 }
