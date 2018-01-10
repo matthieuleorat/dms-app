@@ -22,6 +22,8 @@ import { LoginComponent } from './security/login/login.component';
 import {SecurityService} from "./Service/security.service";
 import { AuthGuard } from "./security/guards/index";
 import { LogoutComponent } from './security/logout/logout.component';
+import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
+import { DmsLayoutComponent } from './layouts/dms-layout/dms-layout.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { LogoutComponent } from './security/logout/logout.component';
     DocumentTagsListComponent,
     LoginComponent,
     LogoutComponent,
+    LoginLayoutComponent,
+    DmsLayoutComponent,
   ],
   imports: [
     BrowserModule,
