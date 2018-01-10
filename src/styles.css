@@ -2,3 +2,9 @@
 .tag-color {
     padding: 3px 5px;
 }
+
+/* Login */
+.login-box {
+    width: 400px;
+    margin: 0 auto;
+}
