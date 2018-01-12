@@ -63,4 +63,21 @@ export class DocumentService {
             { headers }
         );
     }
+
+    save(document: Document) {
+        let token = SecurityService.getUserToken();
+
+        let url = `${API_URL}/${document.id}`;
+
+        const headers = new HttpHeaders({
+            'accept':'application/json',
+            'Authorization':'Bearer '+token,
+        });
+
+        return this.http.put<Document>(
+            url,
+            document,
+            { headers }
+        );
+    }
 }

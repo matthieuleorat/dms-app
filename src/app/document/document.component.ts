@@ -45,4 +45,13 @@ export class DocumentComponent implements OnInit {
       );
   }
 
+  save() {
+      console.log(this.document, this.form.value);
+      console.log(Object.assign(this.document, this.form.value));
+      this.documentService.save(Object.assign(this.document, this.form.value))
+          .subscribe(() => {
+              //this.router.navigate(['/projects']);
+          });
+  }
+
 }
