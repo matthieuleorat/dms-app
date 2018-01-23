@@ -14,6 +14,8 @@ export class DocumentComponent implements OnInit {
   form: FormGroup;
   name: FormControl;
   description: FormControl;
+  file: FormControl;
+  fileName: string;
   document: Document;
 
   constructor(
@@ -22,13 +24,15 @@ export class DocumentComponent implements OnInit {
   ) {
     this.form = new FormGroup({
         name: new FormControl('', Validators.required),
-        description: new FormControl()
+        description: new FormControl(),
+        file: new FormControl(),
     });
     this.name = <FormControl>this.form.controls.name;
     this.description = <FormControl>this.form.controls.description;
+    this.file = <FormControl>this.form.controls.file;
   }
 
-  ngOnInit() {
+    ngOnInit() {
       this.route.paramMap
           .pipe(
               map((paramMap: ParamMap): number =>
@@ -43,15 +47,22 @@ export class DocumentComponent implements OnInit {
               this.form.patchValue(this.document);
           }
       );
-  }
+    }
 
-  save() {
+    save() {
       console.log(this.document, this.form.value);
       console.log(Object.assign(this.document, this.form.value));
       this.documentService.save(Object.assign(this.document, this.form.value))
           .subscribe(() => {
               //this.router.navigate(['/projects']);
           });
-  }
+    }
+
+    filechange(fileInput: any) {
+        if (fileInput.target.files && fileInput.target.files[0]) {
+            this.fileName = fileInput.target.files[0].name;
+        }
+
+    }
 
 }
